@@ -26,14 +26,11 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+    if @article.save
+      flash[:notice] = "Article was created successfully."
+      redirect_to @article
+    else
+      render "new"
     end
   end
 
@@ -42,7 +39,8 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        flash[:notice] = "Article was updated successfully."
+        format.html { redirect_to @article }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
