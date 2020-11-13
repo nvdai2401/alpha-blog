@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_params
+  before_action :set_params, only: [:show, :edit, :update]
 
   def show
     @articles = @user.articles
+  end
+
+  def index
+    @users = User.all
   end
 
   def new
