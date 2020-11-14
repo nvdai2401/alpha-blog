@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
+    @category = Category.find(params[:id])
   end
   
   def new
@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:notice] = "Category was successfully created"
-      respond_to @category
+      redirect_to @category
     else
       render "new"
     end
