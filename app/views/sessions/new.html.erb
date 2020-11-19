@@ -1,20 +1,29 @@
 <h1 class="text-center mt-4">Log in</h1>
 
 <div class="container">
-  <div class="row justify-content-center">
+<div class="row justify-content-center">
+  <div class="col-10 m-3">
+    <div class="bg-light shadowmb-3 rounded p-3">
+      <span class="col-12">You can log in as an administrator to explore all available features</span>
+      <ul>
+        <li>Email: michaelnguyen@gmail.com</li>
+        <li>Password: 123456</li>
+      </ul>
+    </div>
+  </div>
     <div class="col-10">
       <%= form_with(scope: :session, url: login_path, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
         <div class="form-group row">
           <%= f.label :email, class: "col-2 col-form-label text-light" %>
           <div class="col-10"> 
-            <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Enter your email address" %>
+            <%= f.email_field :email, value: "michaelnguyen@gmail.com", class: "form-control shadow rounded", placeholder: "Enter your email address" %>
           </div>
         </div>
 
         <div class="form-group row">
           <%= f.label :password, class: "col-2 col-form-label text-light" %>
           <div class="col-10"> 
-            <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Enter your password" %>
+            <%= f.password_field :password, value: "123456", class: "form-control shadow rounded", placeholder: "Enter your password" %>
           </div>
         </div>
 
